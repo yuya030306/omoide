@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>山田 太郎 - プロフィール</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .profile-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-lg) var(--spacing-md);
+        }
+
+        .profile-card {
+            max-width: 800px;
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--glass-shadow);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 193, 7, 0.2));
+        }
+
+        .profile-content {
+            padding: var(--spacing-lg);
+        }
+
+        .profile-name {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .profile-bio {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--primary-gradient);
+            border: none;
+            border-radius: var(--radius-md);
+            color: #000;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: var(--font-heading);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="profile-container">
+        <div class="profile-card">
+            <img src="images/member1.jpg" alt="山田 太郎" class="profile-image">
+            <div class="profile-content">
+                <h1 class="profile-name">山田 太郎</h1>
+                <p class="profile-bio">
+                    いつも笑顔で元気をくれた太郎。一緒に過ごした日々は宝物です！<br><br>
+
+                    学生時代は常にクラスのムードメーカーとして、みんなを笑顔にしてくれました。
+                    困っている人がいれば真っ先に手を差し伸べる優しさと、
+                    どんな時でも前向きに物事を考えるポジティブさは、
+                    私たちみんなの憧れでした。<br><br>
+
+                    文化祭では実行委員として大活躍し、
+                    体育祭ではリレーのアンカーとして見事な走りを見せてくれました。
+                    これからも君らしく、明るく前向きに頑張ってください！
+                </p>
+                <a href="index.html" class="back-button">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                    <span>トップページに戻る</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

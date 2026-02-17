@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卒業の思い出 - Our Precious Memories</title>
+    <meta name="description" content="私たちの大切な学生時代の思い出">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- 認証モーダル -->
+    <div id="auth-modal" class="auth-modal">
+        <div class="auth-content">
+            <div class="auth-header">
+                <h1>🎓</h1>
+                <h2>Our Precious Memories</h2>
+                <p>私たちの大切な思い出へようこそ</p>
+            </div>
+            <form id="auth-form" class="auth-form">
+                <div class="input-group">
+                    <input type="password" id="password-input" placeholder="パスワードを入力してください" required>
+                    <button type="submit" class="auth-button">
+                        <span>Enter</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+                <p id="auth-error" class="auth-error"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- メインコンテンツ -->
+    <div id="main-content" class="main-content hidden">
+        <!-- ヘッダー -->
+        <header class="header">
+            <nav class="nav">
+                <div class="nav-brand">Our Memories 🎓</div>
+                <ul class="nav-links">
+                    <li><a href="#members">メンバー</a></li>
+                    <li><a href="#videos">動画</a></li>
+                    <li><a href="#birthday">誕生日</a></li>
+                    <li><a href="#message">メッセージ</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- ヒーローセクション -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="gradient-text">Our Precious Memories</span>
+                </h1>
+                <p class="hero-subtitle">8人の仲間と過ごした、かけがえのない日々</p>
+                <div class="hero-decoration">
+                    <div class="decoration-circle"></div>
+                    <div class="decoration-circle"></div>
+                    <div class="decoration-circle"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- メンバーセクション -->
+        <section id="members" class="section members-section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="title-number">01</span>
+                    <span class="title-text">メンバー</span>
+                </h2>
+                <div class="members-grid">
+                    <!-- メンバーカード 1 -->
+                    <div class="member-card" data-member-id="1">
+                        <div class="member-image-wrapper">
+                            <img src="images/member1.jpg" alt="メンバー 1" class="member-image">
+                            <div class="member-overlay"></div>
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">山田 太郎</h3>
+                            <p class="member-message">いつも笑顔で元気をくれた太郎。一緒に過ごした日々は宝物です！</p>
+                        </div>
+                    </div>
+
+                    <!-- メンバーカード 2 -->
+                    <div class="member-card" data-member-id="2">
+                        <div class="member-image-wrapper">
+                            <img src="images/member2.jpg" alt="メンバー 2" class="member-image">
+                            <div class="member-overlay"></div>
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">佐藤 花子</h3>
+                            <p class="member-message">優しくて頼りになる花子。困った時はいつも助けてくれました。</p>
+                        </div>
+                    </div>
+
+                    <!-- メンバーカード 3 -->
+                    <div class="member-card" data-member-id="3">
+                        <div class="member-image-wrapper">
+                            <img src="images/member3.jpg" alt="メンバー 3" class="member-image">
+                            <div class="member-overlay"></div>
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">鈴木 健一</h3>
+                            <p class="member-message">ムードメーカーの健一。君のおかげで毎日が楽しかった！</p>
+                        </div>
+                    </div>
+
+                    <!-- メンバーカード 4 -->
+                    <div class="member-card" data-member-id="4">
+                        <div class="member-image-wrapper">
+                            <img src="images/member4.jpg" alt="メンバー 4" class="member-image">
+                            <div class="member-overlay"></div>
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">田中 美咲</h3>
+                            <p class="member-message">しっかり者の美咲。いつも的確なアドバイスをありがとう。</p>
+                        </div>
+                    </div>
+
+                    <!-- メンバーカード 5 -->
+                    <div class="member-card" data-member-id="5">
+                        <div class="member-image-wrapper">
+                            <img src="images/member5.jpg" alt="メンバー 5" class="member-image">
+                            <div class="member-overlay"></div>
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">伊藤 翔太</h3>
+                            <p class="member-message">努力家の翔太。君の頑張りにいつも刺激をもらっていました。</p>
+                        </div>
+                    </div>
+
+                    <!-- メンバーカード 6 -->
+                    <div class="member-card" data-member-id="6">
+                        <div class="member-image-wrapper">
+                            <img src="images/member6.jpg" alt="メンバー 6" class="member-image">
+                            <div class="member-overlay"></div>
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">渡辺 あかり</h3>
+                            <p class="member-message">明るいあかり。その笑顔に何度も救われました。</p>
+                        </div>
+                    </div>
+
+                    <!-- メンバーカード 7 -->
+                    <div class="member-card" data-member-id="7">
+                        <div class="member-image-wrapper">
+                            <img src="images/member7.jpg" alt="メンバー 7" class="member-image">
+                            <div class="member-overlay"></div>
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">中村 大輝</h3>
+                            <p class="member-message">クールな大輝。でも本当は優しいって知ってるよ！</p>
+                        </div>
+                    </div>
+
+                    <!-- メンバーカード 8 -->
+                    <div class="member-card" data-member-id="8">
+                        <div class="member-image-wrapper">
+                            <img src="images/member8.jpg" alt="メンバー 8" class="member-image">
+                            <div class="member-overlay"></div>
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">小林 さくら</h3>
+                            <p class="member-message">天真爛漫なさくら。君といると自然と笑顔になれました。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 動画セクション -->
+        <section id="videos" class="section videos-section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="title-number">02</span>
+                    <span class="title-text">思い出の動画</span>
+                </h2>
+                <div class="videos-grid">
+                    <!-- 動画カード 1 -->
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <div class="video-placeholder">
+                                <div class="video-icon">
+                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                        <circle cx="30" cy="30" r="30" fill="rgba(255,255,255,0.1)" />
+                                        <path d="M25 20L40 30L25 40V20Z" fill="white" />
+                                    </svg>
+                                </div>
+                                <p class="video-upload-hint">ここに動画を追加できます<br /><small>YouTubeリンクまたはローカルファイル</small></p>
+                            </div>
+                            <!-- 実際の動画を埋め込む場合の例: -->
+                            <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe> -->
+                            <!-- または -->
+                            <!-- <video controls><source src="videos/video1.mp4" type="video/mp4"></video> -->
+                        </div>
+                        <h3 class="video-title">文化祭の思い出</h3>
+                        <p class="video-description">みんなで準備した文化祭、最高の思い出です。</p>
+                    </div>
+
+                    <!-- 動画カード 2 -->
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <div class="video-placeholder">
+                                <div class="video-icon">
+                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                        <circle cx="30" cy="30" r="30" fill="rgba(255,255,255,0.1)" />
+                                        <path d="M25 20L40 30L25 40V20Z" fill="white" />
+                                    </svg>
+                                </div>
+                                <p class="video-upload-hint">ここに動画を追加できます<br /><small>YouTubeリンクまたはローカルファイル</small></p>
+                            </div>
+                        </div>
+                        <h3 class="video-title">修学旅行</h3>
+                        <p class="video-description">笑いあり涙ありの修学旅行。一生の宝物。</p>
+                    </div>
+
+                    <!-- 動画カード 3 -->
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <div class="video-placeholder">
+                                <div class="video-icon">
+                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                        <circle cx="30" cy="30" r="30" fill="rgba(255,255,255,0.1)" />
+                                        <path d="M25 20L40 30L25 40V20Z" fill="white" />
+                                    </svg>
+                                </div>
+                                <p class="video-upload-hint">ここに動画を追加できます<br /><small>YouTubeリンクまたはローカルファイル</small></p>
+                            </div>
+                        </div>
+                        <h3 class="video-title">卒業式</h3>
+                        <p class="video-description">別れは寂しいけど、新しいスタート。頑張ろう！</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 誕生日セクション -->
+        <section id="birthday" class="section birthday-section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="title-number">03</span>
+                    <span class="title-text">誕生日</span>
+                </h2>
+                <div class="birthday-grid">
+                    <!-- 誕生日動画カード 1 -->
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <!-- YouTube動画を埋め込む場合は以下のコメントを外して、VIDEO_IDを実際のIDに置き換えてください -->
+                            <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe> -->
+
+                            <!-- ローカル動画を使用する場合は以下のコメントを外してください -->
+                            <!-- <video controls><source src="videos/birthday1.mp4" type="video/mp4"></video> -->
+
+                            <div class="video-placeholder">
+                                <div class="video-icon">
+                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                        <circle cx="30" cy="30" r="30" fill="rgba(255,215,0,0.2)" />
+                                        <path d="M25 20L40 30L25 40V20Z" fill="#FFD700" />
+                                    </svg>
+                                </div>
+                                <p class="video-upload-hint">ここに誕生日動画を追加できます<br /><small>YouTubeリンクまたはローカルファイル</small>
+                                </p>
+                            </div>
+                        </div>
+                        <h3 class="video-title">誕生日お祝い動画</h3>
+                        <p class="video-description">みんなからのメッセージをまとめた動画です。</p>
+                    </div>
+
+                    <!-- 誕生日動画カード 2 -->
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <!-- YouTube動画を埋め込む場合は以下のコメントを外して、VIDEO_IDを実際のIDに置き換えてください -->
+                            <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe> -->
+
+                            <div class="video-placeholder">
+                                <div class="video-icon">
+                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                        <circle cx="30" cy="30" r="30" fill="rgba(255,215,0,0.2)" />
+                                        <path d="M25 20L40 30L25 40V20Z" fill="#FFD700" />
+                                    </svg>
+                                </div>
+                                <p class="video-upload-hint">ここに誕生日動画を追加できます<br /><small>YouTubeリンクまたはローカルファイル</small>
+                                </p>
+                            </div>
+                        </div>
+                        <h3 class="video-title">サプライズ動画</h3>
+                        <p class="video-description">特別な日の思い出を残しましょう。</p>
+                    </div>
+
+                    <!-- 誕生日動画カード 3 -->
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <!-- YouTube動画を埋め込む場合は以下のコメントを外して、VIDEO_IDを実際のIDに置き換えてください -->
+                            <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe> -->
+
+                            <div class="video-placeholder">
+                                <div class="video-icon">
+                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                        <circle cx="30" cy="30" r="30" fill="rgba(255,215,0,0.2)" />
+                                        <path d="M25 20L40 30L25 40V20Z" fill="#FFD700" />
+                                    </svg>
+                                </div>
+                                <p class="video-upload-hint">ここに誕生日動画を追加できます<br /><small>YouTubeリンクまたはローカルファイル</small>
+                                </p>
+                            </div>
+                        </div>
+                        <h3 class="video-title">記念日動画</h3>
+                        <p class="video-description">大切な瞬間を動画で保存。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- メッセージセクション -->
+        <section id="message" class="section message-section">
+            <div class="container">
+                <div class="message-content">
+                    <h2 class="message-title">Forever in Our Hearts</h2>
+                    <p class="message-text">
+                        8人で過ごした日々は、一生の宝物です。<br>
+                        笑ったこと、泣いたこと、悩んだこと、全てが今の私たちを作っています。<br>
+                        <br>
+                        これからそれぞれの道を歩んでいくけれど、<br>
+                        この絆は永遠に変わらない。<br>
+                        <br>
+                        いつでもここに帰ってこられる場所として、<br>
+                        この思い出のページを残します。<br>
+                        <br>
+                        <strong>ありがとう、そしてこれからもよろしく！</strong>
+                    </p>
+                    <div class="message-decoration">
+                        <span class="star">✨</span>
+                        <span class="star">🌟</span>
+                        <span class="star">✨</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- フッター -->
+        <footer class="footer">
+            <div class="container">
+                <p class="footer-text">© 2026 Our Precious Memories - 8人の仲間たちへ</p>
+                <p class="footer-subtext">Made with ❤️ and 🎓</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
