@@ -1,0 +1,220 @@
+/* ========================================
+   メンバーモーダル
+   ======================================== */
+
+.member-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 2rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.member-modal.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.member-modal-content {
+    background: rgba(0, 0, 0, 0.95);
+    border: 2px solid rgba(255, 215, 0, 0.5);
+    border-radius: var(--radius-lg);
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp 0.4s ease;
+    box-shadow: 0 20px 60px rgba(255, 215, 0, 0.3);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.member-modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 215, 0, 0.2);
+    border: 2px solid rgba(255, 215, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    z-index: 10;
+}
+
+.member-modal-close:hover {
+    background: rgba(255, 215, 0, 0.4);
+    transform: rotate(90deg);
+}
+
+.member-modal-close::before,
+.member-modal-close::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: #FFD700;
+}
+
+.member-modal-close::before {
+    transform: rotate(45deg);
+}
+
+.member-modal-close::after {
+    transform: rotate(-45deg);
+}
+
+.member-modal-body {
+    display: flex;
+    gap: 3rem;
+    padding: 3rem;
+}
+
+.member-modal-image {
+    flex: 0 0 300px;
+}
+
+.member-modal-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+}
+
+.member-modal-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.member-modal-name {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.member-modal-role {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.member-modal-bio {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.member-modal-bio strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.member-modal-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.member-stat {
+    background: rgba(255, 215, 0, 0.1);
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.member-stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+}
+
+.member-stat-value {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #FFD700;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .member-modal-body {
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+        gap: 2rem;
+    }
+
+    .member-modal-image {
+        flex: 0 0 auto;
+    }
+
+    .member-modal-image img {
+        height: 300px;
+    }
+
+    .member-modal-name {
+        font-size: 2rem;
+    }
+
+    .member-modal-content {
+        max-height: 95vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .member-modal {
+        padding: 1rem;
+    }
+
+    .member-modal-body {
+        padding: 1.5rem 1rem;
+    }
+
+    .member-modal-image img {
+        height: 250px;
+    }
+
+    .member-modal-stats {
+        grid-template-columns: 1fr;
+    }
+}

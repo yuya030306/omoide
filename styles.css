@@ -53,6 +53,10 @@
 body {
     font-family: var(--font-body);
     background: var(--bg-dark);
+    background-image: var(--bg-image, none);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
@@ -460,27 +464,9 @@ body::before {
    ======================================== */
 
 .members-grid {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: var(--spacing-md);
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-bottom: 1rem;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-}
-
-.members-grid::-webkit-scrollbar {
-    height: 8px;
-}
-
-.members-grid::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 4px;
-}
-
-.members-grid::-webkit-scrollbar-thumb {
-    background: var(--primary-gradient);
-    border-radius: 4px;
 }
 
 .member-card {
@@ -491,8 +477,6 @@ body::before {
     overflow: hidden;
     transition: all var(--transition-normal);
     cursor: pointer;
-    flex: 0 0 250px;
-    scroll-snap-align: start;
 }
 
 .member-card:hover {

@@ -12,6 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Poppins:wght@300;400;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="member-modal.css">
 </head>
 
 <body>
@@ -352,6 +353,23 @@
                 <p class="footer-subtext">Made with ❤️ and 🎓</p>
             </div>
         </footer>
+    </div>
+
+    <!-- メンバーモーダル -->
+    <div id="member-modal" class="member-modal">
+        <div class="member-modal-content">
+            <div class="member-modal-close" id="modal-close"></div>
+            <div class="member-modal-body">
+                <div class="member-modal-image">
+                    <img id="modal-member-image" src="" alt="メンバー画像">
+                </div>
+                <div class="member-modal-info">
+                    <h2 id="modal-member-name" class="member-modal-name"></h2>
+                    <p id="modal-member-role" class="member-modal-role"></p>
+                    <div id="modal-member-bio" class="member-modal-bio"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
