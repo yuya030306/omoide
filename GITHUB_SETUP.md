@@ -67,7 +67,7 @@ git push -u origin main
 #### オプション A: 既存のNetlifyサイトをGitHubと連携（推奨）
 
 1. **Netlify にログイン**: https://app.netlify.com
-2. **既存のサイトを選択**: `chimerical-taiyaki-e672b0`
+2. **既存のサイトを選択**: `kichikichi-22`
 3. **Site settings** → **Build & deploy** → **Link to GitHub**
 4. リポジトリを選択: `graduation-memories`
 5. ブランチ: `main`
@@ -125,7 +125,7 @@ git push
 
 ### デプロイ状況の確認
 
-Netlify ダッシュボード: https://app.netlify.com/sites/chimerical-taiyaki-e672b0/deploys
+Netlify ダッシュボード: https://app.netlify.com/sites/kichikichi-22/deploys
 
 - ✅ 緑色の「Published」= デプロイ成功
 - 🔄 黄色の「Building」= ビルド中

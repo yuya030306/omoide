@@ -53,7 +53,7 @@ git push -u origin main
 
 1. **Netlify にログイン**: https://app.netlify.com
 
-2. **サイトを選択**: `chimerical-taiyaki-e672b0`
+2. **サイトを選択**: `kichikichi-22`
 
 3. **GitHubと連携**:
    - **Site settings** をクリック
@@ -129,8 +129,8 @@ git push
 - **GitHub**: https://github.com
 - **新しいリポジトリ作成**: https://github.com/new
 - **Personal Access Token作成**: https://github.com/settings/tokens
-- **Netlifyダッシュボード**: https://app.netlify.com/sites/chimerical-taiyaki-e672b0
-- **現在のサイト**: https://chimerical-taiyaki-e672b0.netlify.app
+- **Netlifyダッシュボード**: https://app.netlify.com/sites/kichikichi-22
+- **現在のサイト**: https://kichikichi-22.netlify.app
 
 ---
 

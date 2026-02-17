@@ -157,7 +157,7 @@ Write-Host "=================================================" -ForegroundColor 
 Write-Host ""
 Write-Host "次のステップ:" -ForegroundColor Yellow
 Write-Host "1. Netlify にログイン: https://app.netlify.com" -ForegroundColor White
-Write-Host "2. 既存のサイト 'chimerical-taiyaki-e672b0' を選択" -ForegroundColor White
+Write-Host "2. 既存のサイト 'kichikichi-22' を選択" -ForegroundColor White
 Write-Host "3. Site settings → Build & deploy → Link to GitHub" -ForegroundColor White
 Write-Host "4. リポジトリを選択して連携" -ForegroundColor White
 Write-Host ""

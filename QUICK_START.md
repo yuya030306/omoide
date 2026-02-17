@@ -85,12 +85,12 @@ cd C:\Users\yuya\.gemini\antigravity\scratch\graduation-memories
 2. PowerShellで `.\quick-push.ps1` を実行
 3. 「メンバー1の情報を更新」と入力
 4. 1-2分待つ
-5. https://chimerical-taiyaki-e672b0.netlify.app で確認！
+5. https://kichikichi-22.netlify.app で確認！
 
 ## 🔗 関連リンク
 
-- **サイトURL**: https://chimerical-taiyaki-e672b0.netlify.app
-- **Netlifyダッシュボード**: https://app.netlify.com/sites/chimerical-taiyaki-e672b0/deploys
+- **サイトURL**: https://kichikichi-22.netlify.app
+- **Netlifyダッシュボード**: https://app.netlify.com/sites/kichikichi-22/deploys
 - **詳細ガイド**: [GITHUB_SETUP.md](./GITHUB_SETUP.md)
 
 ## ⚠️ 注意事項

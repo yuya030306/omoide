@@ -56,8 +56,8 @@ try {
     Write-Host "✅ プッシュが完了しました！" -ForegroundColor Green
     Write-Host ""
     Write-Host "🌐 Netlify が自動的にデプロイを開始します（1-2分で完了）" -ForegroundColor Cyan
-    Write-Host "   デプロイ状況: https://app.netlify.com/sites/chimerical-taiyaki-e672b0/deploys" -ForegroundColor White
-    Write-Host "   サイトURL: https://chimerical-taiyaki-e672b0.netlify.app" -ForegroundColor White
+    Write-Host "   デプロイ状況: https://app.netlify.com/sites/kichikichi-22/deploys" -ForegroundColor White
+    Write-Host "   サイトURL: https://kichikichi-22.netlify.app" -ForegroundColor White
     Write-Host ""
 }
 catch {

@@ -13,7 +13,7 @@
 
 ## 🌐 サイトURL
 
-**Live Site**: [https://chimerical-taiyaki-e672b0.netlify.app](https://chimerical-taiyaki-e672b0.netlify.app)
+**Live Site**: [https://kichikichi-22.netlify.app](https://kichikichi-22.netlify.app)
 
 **パスワード**: `memories2026`
 

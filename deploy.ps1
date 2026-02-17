@@ -22,11 +22,11 @@ Write-Host ""
 
 # 2. Netlifyを開く
 Write-Host "🌐 Netlifyを開いています..." -ForegroundColor Cyan
-Start-Process "https://app.netlify.com/sites/chimerical-taiyaki-e672b0/deploys"
+Start-Process "https://app.netlify.com/sites/kichikichi-22/deploys"
 
 # 3. ZIPファイルの場所を開く
 Write-Host "📂 ZIPファイルの場所を開いています..." -ForegroundColor Cyan
-explorer /select,"$zipPath"
+explorer /select, "$zipPath"
 
 Write-Host ""
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Yellow
@@ -36,5 +36,5 @@ Write-Host "次の手順:" -ForegroundColor White
 Write-Host "  1. 開いたNetlifyページで 'graduation-memories.zip' をドラッグ&ドロップ" -ForegroundColor White
 Write-Host "  2. デプロイ完了を待つ（数秒～数十秒）" -ForegroundColor White
 Write-Host ""
-Write-Host "サイトURL: https://chimerical-taiyaki-e672b0.netlify.app" -ForegroundColor Cyan
+Write-Host "サイトURL: https://kichikichi-22.netlify.app" -ForegroundColor Cyan
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Yellow
