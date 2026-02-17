@@ -17,16 +17,16 @@
 
     /* ベースカラー */
     --bg-dark: #000000;
-    --bg-card: rgba(255, 215, 0, 0.05);
-    --bg-card-hover: rgba(255, 215, 0, 0.12);
+    --bg-card: rgba(255, 215, 0, 0.12);
+    --bg-card-hover: rgba(255, 215, 0, 0.25);
     --text-primary: #ffffff;
     --text-secondary: rgba(255, 255, 255, 0.7);
     --text-muted: rgba(255, 255, 255, 0.5);
 
     /* グラスモーフィズム */
-    --glass-bg: rgba(255, 215, 0, 0.08);
-    --glass-border: rgba(255, 215, 0, 0.2);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --glass-bg: rgba(255, 215, 0, 0.15);
+    --glass-border: rgba(255, 215, 0, 0.4);
+    --glass-shadow: 0 8px 32px 0 rgba(255, 215, 0, 0.3);
 
     /* スペーシング */
     --spacing-xs: 0.5rem;
@@ -68,9 +68,9 @@ body::before {
     width: 100%;
     height: 100%;
     background:
-        radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(255, 193, 7, 0.12) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(255, 235, 59, 0.08) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 193, 7, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(255, 235, 59, 0.15) 0%, transparent 50%);
     z-index: -1;
     animation: backgroundShift 20s ease infinite;
 }
@@ -259,7 +259,8 @@ body::before {
     z-index: 100;
     background: rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid rgba(255, 215, 0, 0.5);
+    box-shadow: 0 4px 16px rgba(255, 215, 0, 0.2);
     animation: slideDown 0.5s ease;
 }
 
@@ -506,7 +507,7 @@ body::before {
     width: 100%;
     padding-top: 100%;
     overflow: hidden;
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 193, 7, 0.2));
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 193, 7, 0.25));
 }
 
 .member-image {
@@ -559,7 +560,9 @@ body::before {
    ======================================== */
 
 .videos-section {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 215, 0, 0.05);
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
 }
 
 .videos-grid {
@@ -648,7 +651,9 @@ body::before {
    ======================================== */
 
 .birthday-section {
-    background: rgba(255, 215, 0, 0.03);
+    background: rgba(255, 215, 0, 0.08);
+    border-top: 1px solid rgba(255, 215, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
 }
 
 .birthday-grid {
@@ -743,7 +748,7 @@ body::before {
 .footer {
     padding: var(--spacing-lg) var(--spacing-md);
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 2px solid rgba(255, 215, 0, 0.4);
     background: rgba(0, 0, 0, 0.3);
 }
 
