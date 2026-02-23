@@ -1,0 +1,201 @@
+/* ========================================
+   特別感を出すための追加スタイル
+   ======================================== */
+
+/* ヒーローセクションの名前リスト */
+.hero-names {
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 600;
+    color: #FFD700;
+    margin: var(--spacing-md) 0 var(--spacing-sm);
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.hero-tagline {
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* メンバーカードに特別なエフェクト */
+.member-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #FFD700, #FFC107, #FFEB3B, #FFD700);
+    border-radius: var(--radius-lg);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity var(--transition-normal);
+    animation: gradientRotate 3s linear infinite;
+    background-size: 400% 400%;
+}
+
+@keyframes gradientRotate {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.member-card:hover::before {
+    opacity: 0.6;
+}
+
+/* メンバーカードに輝きのエフェクト */
+.member-card::after {
+    content: '✨';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    opacity: 0;
+    transform: scale(0.5) rotate(0deg);
+    transition: all var(--transition-normal);
+}
+
+.member-card:hover::after {
+    opacity: 1;
+    transform: scale(1) rotate(20deg);
+}
+
+/* ブランドロゴ強化 */
+.nav-brand {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    padding-left: 35px;
+}
+
+.nav-brand::before {
+    content: '🎓';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+}
+
+/* セクションタイトルに装飾 */
+.section-title::before {
+    content: '◆';
+    color: #FFD700;
+    margin-right: 0.5rem;
+    font-size: 0.8em;
+    opacity: 0.6;
+}
+
+/* メッセージセクションをより特別に */
+.message-decoration .star {
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+}
+
+/* フッターを特別に */
+.footer-text::before {
+    content: '✨ ';
+}
+
+.footer-text::after {
+    content: ' ✨';
+}
+
+/* スクロール時のパーティクル効果用（オプション） */
+.sparkle {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: #FFD700;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    box-shadow: 0 0 10px #FFD700;
+    animation: sparkleFloat 2s ease-out forwards;
+}
+
+@keyframes sparkleFloat {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(0);
+    }
+}
+
+/* 名前強調エフェクト */
+.member-name {
+    position: relative;
+    display: inline-block;
+}
+
+.member-name::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-gradient);
+    transform: scaleX(0);
+    transition: transform var(--transition-normal);
+}
+
+.member-card:hover .member-name::after {
+    transform: scaleX(1);
+}
+
+/* モーダルに特別感 */
+.member-modal-content {
+    position: relative;
+    overflow: visible;
+}
+
+.member-modal-content::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: var(--primary-gradient);
+    border-radius: 2px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .hero-names {
+        font-size: 0.95rem;
+    }
+
+    .nav-brand {
+        padding-left: 30px;
+    }
+
+    .nav-brand::before {
+        font-size: 1.3rem;
+    }
+}
