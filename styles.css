@@ -630,6 +630,43 @@ body::before {
     font-size: 0.95rem;
 }
 
+/* YouTubeサムネイルリンク */
+.yt-thumb-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.yt-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s ease;
+}
+
+.yt-thumb-link:hover .yt-thumb-img {
+    filter: brightness(0.75);
+}
+
+.yt-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    opacity: 0.9;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+}
+
+.yt-thumb-link:hover .yt-play-btn {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 1;
+}
+
 /* ========================================
    誕生日セクション
    ======================================== */
@@ -644,6 +681,19 @@ body::before {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: var(--spacing-md);
+}
+
+/* 動画が1つのみの場合：中央寄せ・大きく表示 */
+.videos-grid-single,
+.birthday-grid-single {
+    display: flex;
+    justify-content: center;
+}
+
+.videos-grid-single .video-card,
+.birthday-grid-single .video-card {
+    width: 100%;
+    max-width: 720px;
 }
 
 /* ========================================
