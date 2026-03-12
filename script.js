@@ -136,9 +136,15 @@ function initScrollAnimations() {
         });
     }, observerOptions);
 
-    // メンバーカードのアニメーション
+    // メンバーカードのアニメーション & メンバーカラー適用
     const memberCards = document.querySelectorAll('.member-card');
     memberCards.forEach((card, index) => {
+        // メンバーカラーをCSS変数でセット
+        const memberId = card.dataset.memberId;
+        if (memberId && memberData[memberId] && memberData[memberId].color) {
+            card.style.setProperty('--member-color', memberData[memberId].color);
+        }
+
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';
         card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
@@ -186,7 +192,7 @@ const memberData = {
     1: {
         name: '中山 柊弥',
         role: '謎多き努力家',
-        color: '#2ecc96',   /* ディープエメラルド */
+        color: '#008a5e',   /* 深緑（エメラルド） */
         images: [
             'images/syuya/syuya1.jpg',
             'images/syuya/syuya2.jpg',
@@ -197,15 +203,16 @@ const memberData = {
         bio: `
             <p>マジで何考えてるか読めない瞬間がある男。でもノリの良さはピカイチで、場を回すのが上手い！</p>
             <br>
-            <p>気配りの鬼でめちゃくちゃ優しいし、協調性ばっちり！なのに言うべきことははっきり主張してくるから、チームに絶対一人は欲しいタイプ！</p>
+            <p>気配りの鬼でめちゃくちゃ優しいし、協調性ばっちり！<p>
+            <p>なのに言うべきことははっきり主張してくるから、チームに絶対一人は欲しいタイプ！</p>
             <br>
             <p>表ではサラッとこなしてる感出してるけど、裏でガッツリ努力してるのバレてるからな。おまけに彼女もすごく大切にするんだよなこいつ。</p>
         `
     },
     2: {
         name: '立花 信幸',
-        role: '憎めないハイスペック金欠モテ男',
-        color: '#d4ab4c',   /* シャンパンゴールド */
+        role: 'ハイスペック金欠モテ男',
+        color: '#ff69b4',   /* ホットピンク */
         images: [
             'images/nobu/nobu1.jpg',
             'images/nobu/nobu2.jpg',
@@ -224,7 +231,7 @@ const memberData = {
     3: {
         name: '岡本 泉里',
         role: '愛に生きるスマートイケメン',
-        color: '#a0314b',   /* ボルドー */
+        color: '#800020',   /* 深赤（ワインレッド） */
         images: [
             'images/senri/senri1.jpg',
             'images/senri/senri2.jpg',
@@ -243,7 +250,7 @@ const memberData = {
     4: {
         name: '佐藤 大生',
         role: 'ほっとけない愛されマスコット',
-        color: '#f5c518',   /* サンフラワーイエロー */
+        color: '#f9a825',   /* 鮮黄（サンフラワー） */
         images: [
             'images/hiroki/hiroki1.jpg',
             'images/hiroki/hiroki2.jpg',
@@ -260,9 +267,9 @@ const memberData = {
         `
     },
     5: {
-        name: '中橋 哀斗',
-        role: '微笑みのかなTO',
-        color: '#9b6dea',   /* アメジストパープル */
+        name: '中橋 哉斗',
+        role: 'ミステリアスな天才',
+        color: '#9966cc',   /* アメジストパープル（紫） */
         images: [
             'images/kana/kana1.jpg',
             'images/kana/kana2.jpg',
@@ -279,9 +286,9 @@ const memberData = {
         `
     },
     6: {
-        name: '荷野 新',
-        role: '信ら大好き圧倒的ストイックニキ',
-        color: '#e8302a',   /* スカーレット */
+        name: '荻野 新',
+        role: '圧倒的ストイック',
+        color: '#f67e00',   /* 画像に合わせたオレンジ */
         images: [
             'images/ogi/ogi1.jpg',
             'images/ogi/ogi2.jpg',
@@ -299,8 +306,8 @@ const memberData = {
     },
     7: {
         name: '塚越 涼介',
-        role: '友情に厚い頼れるおじいちゃん',
-        color: '#b07d4a',   /* アースブラウン */
+        role: '頼れるおじいちゃん',
+        color: '#ff6868ff',   /* 明るめのグレー（ライトスチールブルー） */
         images: [
             'images/ryou/ryou1.jpg',
             'images/ryou/ryou2.jpg',
@@ -317,9 +324,9 @@ const memberData = {
         `
     },
     8: {
-        name: '林 祝哉',
-        role: '天真缄漫な思い出職人',
-        color: '#4fc3f7',   /* スカイブルー */
+        name: '林 祐哉',
+        role: '全方位愛されお兄ちゃん',
+        color: '#084ef0ff',
         images: [
             'images/yuya/yuya1.jpg',
             'images/yuya/yuya2.jpg',
@@ -328,11 +335,11 @@ const memberData = {
             'images/yuya/yuya5.jpg',
         ],
         bio: `
-            <p>いつも元気いっぱいで天真爛漫。周りを巻き込んで明るくする天才で、一緒にいると自然と笑顔になっちゃう謎の引力を持った男。</p>
+            <p>高身長でスタイル抜群、さらに鬼のような行動力まで持ってるモテるハイスペック男子。とにかく面倒見が良くて割と何でも器用にこなせちゃう。でも、女の子を見る目だけはミジンコレベルに壊滅的、そこだけはマジでこれから頑張って養っていってほしい！</p>
             <br>
-            <p>普段はマイペースに生きてるように見えて、実はみんなの思い出をサクッと動画に編集して形にしてくれる頼れるクリエイター気質な一面も。夜な夜なVALORANTで熱くなったり、フットワーク軽くあちこち飛び回ったりと、とにかくバイタリティの塊。</p>
+            <p>実はたまに強がって、弱みを見せないように踏ん張ってることがある。本人は隠してるつもりかもしれないけど、そんなに一人で抱え込まなくてもいいのに、つい格好つけちゃうところも含めて応援したくなる存在。</p>
             <br>
-            <p>純粋で真っ直ぐな性格だからこそ、誰とでもフラットに接することができる。この最高のメンバーの思い出を繋ぎ、みんなの笑顔を作ってくれる絶対に欠かせない存在！</p>
+            <p>これからはもっと情けない姿もさらけ出してほしいし、そんな時は全力で笑って受け止めてあげる準備はできてます。カッコいいのにどこか放っておけない、一緒にいるとこっちまで笑顔になれる最高に魅力的なやつ！</p>
         `
     }
 };

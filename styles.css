@@ -824,6 +824,7 @@ body::before {
 .member-info {
     padding: var(--spacing-md);
     text-align: center;
+    background: color-mix(in srgb, var(--member-color, rgba(255, 215, 0, 0.15)) 25%, transparent);
 }
 
 .member-name {
