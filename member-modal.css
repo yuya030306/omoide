@@ -217,17 +217,16 @@
     font-family: var(--font-heading);
     font-size: 2.5rem;
     font-weight: 700;
-    background: var(--primary-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--member-color, #FFD700);
     margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px color-mix(in srgb, var(--member-color, #FFD700) 40%, transparent);
 }
 
 .member-modal-role {
-    color: var(--text-secondary);
+    color: color-mix(in srgb, var(--member-color, #FFD700) 70%, white);
     font-size: 1.1rem;
     margin-bottom: 1rem;
+    font-weight: 500;
 }
 
 .member-modal-bio {

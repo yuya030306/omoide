@@ -186,6 +186,7 @@ const memberData = {
     1: {
         name: '中山 柊弥',
         role: '謎多き努力家',
+        color: '#2ecc96',   /* ディープエメラルド */
         images: [
             'images/syuya/syuya1.jpg',
             'images/syuya/syuya2.jpg',
@@ -204,6 +205,7 @@ const memberData = {
     2: {
         name: '立花 信幸',
         role: '憎めないハイスペック金欠モテ男',
+        color: '#d4ab4c',   /* シャンパンゴールド */
         images: [
             'images/nobu/nobu1.jpg',
             'images/nobu/nobu2.jpg',
@@ -222,6 +224,7 @@ const memberData = {
     3: {
         name: '岡本 泉里',
         role: '愛に生きるスマートイケメン',
+        color: '#a0314b',   /* ボルドー */
         images: [
             'images/senri/senri1.jpg',
             'images/senri/senri2.jpg',
@@ -240,6 +243,7 @@ const memberData = {
     4: {
         name: '佐藤 大生',
         role: 'ほっとけない愛されマスコット',
+        color: '#f5c518',   /* サンフラワーイエロー */
         images: [
             'images/hiroki/hiroki1.jpg',
             'images/hiroki/hiroki2.jpg',
@@ -256,8 +260,9 @@ const memberData = {
         `
     },
     5: {
-        name: '中橋 哉斗',
+        name: '中橋 哀斗',
         role: '微笑みのかなTO',
+        color: '#9b6dea',   /* アメジストパープル */
         images: [
             'images/kana/kana1.jpg',
             'images/kana/kana2.jpg',
@@ -274,8 +279,9 @@ const memberData = {
         `
     },
     6: {
-        name: '荻野 新',
-        role: '俺ら大好き圧倒的ストイックニキ',
+        name: '荷野 新',
+        role: '信ら大好き圧倒的ストイックニキ',
+        color: '#e8302a',   /* スカーレット */
         images: [
             'images/ogi/ogi1.jpg',
             'images/ogi/ogi2.jpg',
@@ -294,6 +300,7 @@ const memberData = {
     7: {
         name: '塚越 涼介',
         role: '友情に厚い頼れるおじいちゃん',
+        color: '#b07d4a',   /* アースブラウン */
         images: [
             'images/ryou/ryou1.jpg',
             'images/ryou/ryou2.jpg',
@@ -310,8 +317,9 @@ const memberData = {
         `
     },
     8: {
-        name: '林 祐哉',
-        role: '天真爛漫な思い出職人',
+        name: '林 祝哉',
+        role: '天真缄漫な思い出職人',
+        color: '#4fc3f7',   /* スカイブルー */
         images: [
             'images/yuya/yuya1.jpg',
             'images/yuya/yuya2.jpg',
@@ -504,6 +512,10 @@ function openMemberModal(memberId) {
     modalName.textContent = member.name;
     modalRole.textContent = member.role;
     modalBio.innerHTML = member.bio;
+
+    // メンバー固有色をCSS変数でセット
+    const content = document.querySelector('.member-modal-content');
+    content.style.setProperty('--member-color', member.color || '#FFD700');
 
     // images フィールドが配列なら使用、文字列なら1枚として扱う
     const imgs = Array.isArray(member.images)
