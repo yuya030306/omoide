@@ -26,32 +26,46 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // フォーム送信イベント
-authForm.addEventListener('submit', (e) => {
+// フォーム送信イベント
+authForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const enteredPassword = passwordInput.value;
 
-    if (enteredPassword === CORRECT_PASSWORD) {
-        // 認証成功
-        sessionStorage.setItem(AUTH_KEY, 'true');
-        authError.textContent = '';
+    try {
+        const decryptedMainBytes = CryptoJS.AES.decrypt(ENCRYPTED_PAYLOAD.mainContent, enteredPassword);
+        const decryptedModalBytes = CryptoJS.AES.decrypt(ENCRYPTED_PAYLOAD.memberModal, enteredPassword);
+        const decryptedDataBytes = CryptoJS.AES.decrypt(ENCRYPTED_PAYLOAD.memberData, enteredPassword);
 
-        // スムーズな遷移
+        const decryptedMain = decryptedMainBytes.toString(CryptoJS.enc.Utf8);
+        const decryptedModal = decryptedModalBytes.toString(CryptoJS.enc.Utf8);
+        const decryptedDataString = decryptedDataBytes.toString(CryptoJS.enc.Utf8);
+
+        if (!decryptedMain || !decryptedModal || !decryptedDataString) {
+            throw new Error('Incorrect password');
+        }
+
+        memberData = JSON.parse(decryptedDataString);
+        mainContent.innerHTML = decryptedMain;
+        
+        const modalElement = document.getElementById('member-modal');
+        if (modalElement) {
+            modalElement.innerHTML = decryptedModal;
+        }
+
+        sessionStorage.setItem(AUTH_KEY, 'true');
+        sessionStorage.setItem('temp_key', enteredPassword);
+
+        authError.textContent = '';
         authModal.style.animation = 'fadeOut 0.5s ease forwards';
+
+        initializeDynamicElements();
+
         setTimeout(() => {
             showMainContent();
         }, 500);
-    } else {
-        // 認証失敗
-        authError.textContent = 'パスワードが正しくありません';
-        passwordInput.value = '';
-        passwordInput.focus();
-
-        // 入力フィールドを揺らすアニメーション
-        passwordInput.style.animation = 'shake 0.5s ease';
-        setTimeout(() => {
-            passwordInput.style.animation = '';
-        }, 500);
+    } catch (error) {
+        showAuthError();
     }
 });
 
@@ -188,163 +202,47 @@ window.addEventListener('scroll', () => {
 // ========================================
 
 // メンバーデータ
-const memberData = {
-    1: {
-        name: '中山 柊弥',
-        role: '謎多き努力家',
-        color: '#008a5e',   /* 深緑（エメラルド） */
-        images: [
-            'images/syuya/syuya1.jpg',
-            'images/syuya/syuya2.jpg',
-            'images/syuya/syuya3.jpg',
-            'images/syuya/syuya4.jpg',
-            'images/syuya/syuya5.jpg',
-        ],
-        bio: `
-            <p>マジで何考えてるか読めない瞬間がある男。でもノリの良さはピカイチで、場を回すのが上手い！</p>
-            <br>
-            <p>気配りの鬼でめちゃくちゃ優しいし、協調性ばっちり！<p>
-            <p>なのに言うべきことははっきり主張してくるから、チームに絶対一人は欲しいタイプ！</p>
-            <br>
-            <p>表ではサラッとこなしてる感出してるけど、裏でガッツリ努力してるのバレてるからな。おまけに彼女もすごく大切にするんだよなこいつ。</p>
-        `
-    },
-    2: {
-        name: '立花 信幸',
-        role: 'ハイスペック金欠モテ男',
-        color: '#ff69b4',   /* ホットピンク */
-        images: [
-            'images/nobu/nobu1.jpg',
-            'images/nobu/nobu2.jpg',
-            'images/nobu/nobu3.jpg',
-            'images/nobu/nobu4.jpg',
-            'images/nobu/nobu5.jpg',
-        ],
-        bio: `
-            <p>基本的にいつもふざけてるけど、運動神経抜群で男女問わずモテモテなズルい男。マジで頼むから浮気症もここで卒業してくれよな！</p>
-            <br>
-            <p>普段はおっちょこちょいで抜けてるところもあるくせに、やるべきことはきっちりこなすからタチが悪い。根はめちゃくちゃ優しくて、人の意見を頭ごなしに否定せず、1回ちゃんと飲み込んでくれる器のデカさを持ってる。</p>
-            <br>
-            <p>それだけハイスペックなのに、なぜか常に「金がない」のが信幸クオリティ。なんだかんだ周りから愛される、憎めない最高の男なんよ。</p>
-        `
-    },
-    3: {
-        name: '岡本 泉里',
-        role: '愛に生きるスマートイケメン',
-        color: '#800020',   /* 深赤（ワインレッド） */
-        images: [
-            'images/senri/senri1.jpg',
-            'images/senri/senri2.jpg',
-            'images/senri/senri3.jpg',
-            'images/senri/senri4.jpg',
-            'images/senri/senri5.png',
-        ],
-        bio: `
-            <p>顔もかっこいいし優しいからそりゃモテる。しかも彼女のことはとんでもなく大切にする一途な男。仲良くなると実はめちゃくちゃ明るくて最高のやつ！</p>
-            <br>
-            <p>チームが行き詰まった時に「こうすればいいんじゃない？」ってスッと解決策を出してくれる救世主。何事もうまく立ち回って生きていくタイプだけど、根はバチバチの負けず嫌いっていうギャップもち！</p>
-            <br>
-            <p>表ではスマートに見せてるけど、裏でしっかりやってるのがダルい。完璧そうに見えてどこか放っておけない、人間味あふれる自慢のチームメイト！</p>
-        `
-    },
-    4: {
-        name: '佐藤 大生',
-        role: 'ほっとけない愛されマスコット',
-        color: '#f9a825',   /* 鮮黄（サンフラワー） */
-        images: [
-            'images/hiroki/hiroki1.jpg',
-            'images/hiroki/hiroki2.jpg',
-            'images/hiroki/hiroki3.jpg',
-            'images/hiroki/hiroki4.jpg',
-            'images/hiroki/hiroki5.jpg',
-        ],
-        bio: `
-            <p>超あわてんぼうな上に遅刻が止まらない。でもマジでほっとけない可愛さがあって、とにかく友達が多くて誰からも愛されるマスコットみたいなヤツ！</p>
-            <br>
-            <p>実は周りからの視線を気にするタイプで、優しくて配慮も欠かさない。でもただ空気を読むだけじゃなくて、「これどう？」っていろんな提案をしてくれるし、自分の意見もしっかり伝えてくれる芯の強さも持ってる。</p>
-            <br>
-            <p>そして何より、絶妙なタイミングでクソおもろいことをぶっこんでくる笑いのセンスが最高。カッコいいのにどこか抜けてて憎めない、一緒にいると楽しいし笑顔になれる自慢の友達！</p>
-        `
-    },
-    5: {
-        name: '中橋 哉斗',
-        role: 'ミステリアスな天才',
-        color: '#9966cc',   /* アメジストパープル（紫） */
-        images: [
-            'images/kana/kana1.jpg',
-            'images/kana/kana2.jpg',
-            'images/kana/kana3.jpg',
-            'images/kana/kana4.jpg',
-            'images/kana/kana5.jpg',
-        ],
-        bio: `
-            <p>プライベートは謎めいたことが多いミステリアスな男。でも根はめちゃくちゃ真面目で、ただの遊びの待ち合わせなのに、きっちり10分前には到着して待ってるような律儀なヤツ！</p>
-            <br>
-            <p>普段は物静かで、自認コツコツと物事を進める男。人の意見を決して頭ごなしに否定しない優しさがあるけど、決して周りに流されてるわけじゃなく、自分の中にブレない「軸」をしっかり持ってる。</p>
-            <br>
-            <p>そして何より、どれだけ周りから「かなTO」ってイジられてもニコニコ笑って過ごせる、天才的な心の余裕の持ち主。謎は多いけど、とにかくかなTO、最高の存在！</p>
-        `
-    },
-    6: {
-        name: '荻野 新',
-        role: '圧倒的ストイック',
-        color: '#f67e00',   /* 画像に合わせたオレンジ */
-        images: [
-            'images/ogi/ogi1.jpg',
-            'images/ogi/ogi2.jpg',
-            'images/ogi/ogi3.jpg',
-            'images/ogi/ogi4.jpg',
-            'images/ogi/ogi5.jpg',
-        ],
-        bio: `
-            <p>とにかく明るくて、何事にもマジで真面目。タフでストイックだから、どんなにしんどい状況でも気合いで乗り切るバケモノ級のメンタル所持者。</p>
-            <br>
-            <p>人の気持ちをちゃんと汲み取れる優しさがある反面、教授にブチギレられるほどバチバチに意見をぶつけちゃう激熱な一面もあるんだよね～～</p>
-            <br>
-            <p>俺らのことが好きすぎるあまり、誘われたら他の用事をすぐ飛ばしてきちゃうフットワークの軽さ。なのに、なぜかいつも貧乏くじを引かされる「圧倒的不憫キャラ」なのがおぎなんよね。いつも俺らを支えてくれる最高の仲間！</p>
-        `
-    },
-    7: {
-        name: '塚越 涼介',
-        role: '頼れるおじいちゃん',
-        color: '#ff6868ff',   /* 明るめのグレー（ライトスチールブルー） */
-        images: [
-            'images/ryou/ryou1.jpg',
-            'images/ryou/ryou2.jpg',
-            'images/ryou/ryou3.jpg',
-            'images/ryou/ryou4.jpg',
-            'images/ryou/ryou5.jpg',
-        ],
-        bio: `
-            <p>とにかく優しくて、これまでマジで何事も器用にうまく成し遂げてきたハイスペック男。協調性抜群でノリもめちゃくちゃ良いのに、根はしっかり真面目っていう非の打ち所がない性格、えぐい</p>
-            <br>
-            <p>でも、趣味が「散歩」や「麻雀」と、中身は完全に落ち着き払ったおじいちゃん。その老成した視点のおかげか、みんながスルーしてしまうような意外なポイントや細かな変化に一番に気づいてくれる鋭さを持ってるのよ</p>
-            <br>
-            <p>そして何より、とにかく友情に厚くてめちゃくちゃ仲間思い。何でもこなせる頼りがいと、安心感を兼ね備えた、チームに絶対欠かせない精神的支柱！</p>
-        `
-    },
-    8: {
-        name: '林 祐哉',
-        role: '全方位愛されお兄ちゃん',
-        color: '#084ef0ff',
-        images: [
-            'images/yuya/yuya1.jpg',
-            'images/yuya/yuya2.jpg',
-            'images/yuya/yuya3.jpg',
-            'images/yuya/yuya4.jpg',
-            'images/yuya/yuya5.jpg',
-        ],
-        bio: `
-            <p>高身長でスタイル抜群、さらに鬼のような行動力まで持ってるモテるハイスペック男子。とにかく面倒見が良くて割と何でも器用にこなせちゃう。でも、女の子を見る目だけはミジンコレベルに壊滅的、そこだけはマジでこれから頑張って養っていってほしい！</p>
-            <br>
-            <p>実はたまに強がって、弱みを見せないように踏ん張ってることがある。本人は隠してるつもりかもしれないけど、そんなに一人で抱え込まなくてもいいのに、つい格好つけちゃうところも含めて応援したくなる存在。</p>
-            <br>
-            <p>これからはもっと情けない姿もさらけ出してほしいし、そんな時は全力で笑って受け止めてあげる準備はできてます。カッコいいのにどこか放っておけない、一緒にいるとこっちまで笑顔になれる最高に魅力的なやつ！</p>
-        `
-    }
-};
+// メンバーデータ (復号時に代入される)
+let memberData = {};
 
+// 初回読み込みでセッションから復号を試みる
 document.addEventListener('DOMContentLoaded', () => {
+    const isAuthenticated = sessionStorage.getItem(AUTH_KEY);
+    const tempKey = sessionStorage.getItem('temp_key');
+
+    if (isAuthenticated === 'true' && tempKey) {
+        try {
+            const decryptedMainBytes = CryptoJS.AES.decrypt(ENCRYPTED_PAYLOAD.mainContent, tempKey);
+            const decryptedModalBytes = CryptoJS.AES.decrypt(ENCRYPTED_PAYLOAD.memberModal, tempKey);
+            const decryptedDataBytes = CryptoJS.AES.decrypt(ENCRYPTED_PAYLOAD.memberData, tempKey);
+
+            const decryptedMain = decryptedMainBytes.toString(CryptoJS.enc.Utf8);
+            const decryptedModal = decryptedModalBytes.toString(CryptoJS.enc.Utf8);
+            const decryptedDataString = decryptedDataBytes.toString(CryptoJS.enc.Utf8);
+
+            if (decryptedMain && decryptedModal && decryptedDataString) {
+                memberData = JSON.parse(decryptedDataString);
+                mainContent.innerHTML = decryptedMain;
+                const modalElement = document.getElementById('member-modal');
+                if (modalElement) {
+                    modalElement.innerHTML = decryptedModal;
+                }
+
+                initializeDynamicElements();
+                showMainContent();
+            } else {
+                logout();
+            }
+        } catch (e) {
+            logout();
+        }
+    } else if (isAuthenticated === 'true' && !tempKey) {
+        logout();
+    }
+});
+
+function initializeDynamicElements() {
+    // メンバーカードのイベントリスナー設定
     const memberCards = document.querySelectorAll('.member-card');
     const modal = document.getElementById('member-modal');
     const modalClose = document.getElementById('modal-close');
@@ -367,44 +265,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // モーダルを閉じる
-    modalClose.addEventListener('click', closeMemberModal);
+    if (modalClose) modalClose.addEventListener('click', closeMemberModal);
 
-    // 背景をクリックして閉じる
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            closeMemberModal();
-        }
-    });
-
-    // ESCキーで閉じる
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeMemberModal();
-        }
-    });
-});
-
-// ========================================
-// 動画プレイヤーのコントロール
-// ========================================
-
-// 動画がある場合の自動制御
-document.querySelectorAll('video').forEach(video => {
-    // ビデオが画面内に入ったら自動再生（オプション）
-    const videoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // 必要に応じて自動再生を有効化
-                // entry.target.play();
-            } else {
-                entry.target.pause();
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeMemberModal();
             }
         });
-    }, { threshold: 0.5 });
+    }
 
-    videoObserver.observe(video);
-});
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+            closeMemberModal();
+        }
+    });
+
+    document.querySelectorAll('video').forEach(video => {
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // entry.target.play();
+                } else {
+                    entry.target.pause();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        videoObserver.observe(video);
+    });
+}
 
 // ========================================
 // ユーティリティ関数
