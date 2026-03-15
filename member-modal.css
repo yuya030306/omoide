@@ -282,6 +282,10 @@
         height: 300px;
     }
 
+    .carousel-track {
+        height: 300px;
+    }
+
     .member-modal-name {
         font-size: 2rem;
     }
@@ -301,6 +305,10 @@
     }
 
     .member-modal-image img {
+        height: 250px;
+    }
+
+    .carousel-track {
         height: 250px;
     }
 

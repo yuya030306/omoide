@@ -330,6 +330,25 @@ body::before {
     width: 100%;
 }
 
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        gap: 1.2rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .nav-links a {
+        font-size: 0.95rem;
+        white-space: nowrap;
+    }
+}
+
 /* ========================================
    ヒーローセクション
    ======================================== */
@@ -527,7 +546,7 @@ body::before {
 
 @media (max-width: 600px) {
 
-    /* スマホ：中央1枚のみ大きく */
+    /* スマホ：中央の写真のみバランスよく表示 */
     .hg-1,
     .hg-2,
     .hg-4,
@@ -536,8 +555,10 @@ body::before {
     }
 
     .hg-3 {
-        max-width: 90% !important;
-        height: 65% !important;
+        width: 55% !important;
+        max-width: 250px !important;
+        height: auto !important;
+        aspect-ratio: 3 / 4;
     }
 }
 
