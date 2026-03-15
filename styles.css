@@ -548,7 +548,8 @@ body::before {
     .hero {
         flex-direction: column;
         justify-content: flex-start;
-        padding-top: 5rem;
+        padding-top: 8rem;
+        /* Enough space to avoid header overlap */
         min-height: auto;
     }
 
@@ -556,60 +557,44 @@ body::before {
         position: relative;
         height: auto;
         width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        margin-top: 2rem;
-        padding: 0 1rem 3rem 1rem;
+        display: grid !important;
+        /* Force grid layout */
+        grid-template-columns: repeat(2, 1fr) !important;
+        /* Exactly 2 columns */
+        gap: 12px;
+        margin-top: 1rem;
+        padding: 0 1rem 4rem 1rem;
         pointer-events: auto;
-        /* Allow interaction if needed */
     }
 
     .hg-row {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
+        display: contents !important;
+        /* Let children of hg-row be direct grid items of hero-group-photos */
     }
 
-    /* スマホ：全枚表示するように修正 */
-    .hg-1,
-    .hg-2,
-    .hg-3,
-    .hg-4,
-    .hg-5 {
+    /* スマホ：全枚（10枚）表示するように修正 */
+    .hg-photo {
         display: block !important;
-        width: calc(45% - 5px) !important;
-        /* 2列並び */
+        width: 100% !important;
+        /* Fill grid cell */
         max-width: none !important;
         height: auto !important;
-        aspect-ratio: auto !important;
-        object-fit: contain;
+        aspect-ratio: 1 / 1 !important;
+        /* Force same height for all */
+        object-fit: cover !important;
+        /* Prevent squishing and fill the square */
         transform: none !important;
         opacity: 1 !important;
         position: static !important;
+        border-radius: 12px !important;
+        border-width: 2px !important;
         animation: photoSlideUp 0.6s ease forwards;
+        overflow: hidden;
     }
 
-    /* 奇数番目などの特定のアニメーション遅延を無効化、または再設定 */
-    .hg-photo:nth-child(1) {
+    /* アニメーション遅延の設定 */
+    .hg-photo:nth-child(n) {
         animation-delay: 0.1s;
-    }
-
-    .hg-photo:nth-child(2) {
-        animation-delay: 0.2s;
-    }
-
-    .hg-photo:nth-child(3) {
-        animation-delay: 0.3s;
-    }
-
-    .hg-photo:nth-child(4) {
-        animation-delay: 0.4s;
-    }
-
-    .hg-photo:nth-child(5) {
-        animation-delay: 0.5s;
     }
 }
 
