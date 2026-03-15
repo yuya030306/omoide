@@ -545,6 +545,12 @@ body::before {
 }
 
 @media (max-width: 600px) {
+    .hero-group-photos {
+        height: 65%;
+        justify-content: center;
+        gap: 15px;
+        padding-bottom: 2rem;
+    }
 
     /* スマホ：中央の写真のみバランスよく表示 */
     .hg-1,
@@ -555,10 +561,11 @@ body::before {
     }
 
     .hg-3 {
-        width: 55% !important;
-        max-width: 250px !important;
-        height: auto !important;
+        width: auto !important;
+        max-width: 80% !important;
+        height: 40% !important;
         aspect-ratio: 3 / 4;
+        object-fit: cover;
     }
 }
 
