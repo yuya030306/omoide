@@ -47,7 +47,7 @@ authForm.addEventListener('submit', async (e) => {
 
         memberData = JSON.parse(decryptedDataString);
         mainContent.innerHTML = decryptedMain;
-        
+
         const modalElement = document.getElementById('member-modal');
         if (modalElement) {
             modalElement.innerHTML = decryptedModal;
