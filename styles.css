@@ -545,10 +545,18 @@ body::before {
 }
 
 @media (max-width: 600px) {
+    .hero {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 6rem;
+    }
+
     .hero-group-photos {
-        height: 65%;
+        position: relative;
+        height: auto;
         justify-content: center;
-        gap: 15px;
+        gap: 20px;
+        margin-top: 2rem;
         padding-bottom: 2rem;
     }
 
@@ -561,11 +569,12 @@ body::before {
     }
 
     .hg-3 {
-        width: auto !important;
-        max-width: 80% !important;
-        height: 40% !important;
-        aspect-ratio: 3 / 4;
-        object-fit: cover;
+        width: 85% !important;
+        max-width: 350px !important;
+        height: auto !important;
+        aspect-ratio: auto !important;
+        object-fit: contain;
+        transform: none !important;
     }
 }
 

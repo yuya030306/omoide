@@ -266,8 +266,13 @@
     color: var(--member-color, #FFD700);
 }
 
-/* レスポンシブ対応 */
 @media (max-width: 768px) {
+    .member-modal {
+        align-items: flex-start;
+        padding: 3rem 1rem 2rem 1rem;
+        overflow-y: auto;
+    }
+
     .member-modal-body {
         flex-direction: column;
         padding: 2rem 1.5rem;
@@ -291,13 +296,15 @@
     }
 
     .member-modal-content {
-        max-height: 90%;
+        max-height: none;
+        height: auto;
+        margin: auto;
     }
 }
 
 @media (max-width: 480px) {
     .member-modal {
-        padding: 1rem;
+        padding: 2rem 1rem 3rem 1rem;
     }
 
     .member-modal-body {
